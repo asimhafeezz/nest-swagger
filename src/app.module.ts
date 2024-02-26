@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { UserEntity } from './entities';
+import { EventShiftEntity, UserEntity } from './entities';
 import { UserModule } from './modules/user/user.module';
 
 @Module({
@@ -14,7 +14,7 @@ import { UserModule } from './modules/user/user.module';
       username: 'postgres',
       password: 'postgres',
       database: 'testing_db',
-      entities: [UserEntity],
+      entities: [UserEntity, EventShiftEntity, 'dist/**/*.entity{.ts,.js}'],
       synchronize: true,
     }),
     UserModule
